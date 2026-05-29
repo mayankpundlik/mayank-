@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Tracker</title>
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com">
+    <link rel="preconnect" href="https://api.open-meteo.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="weather-panel" aria-labelledby="app-title">
+        <div class="panel-top">
+          <div>
+            <p class="eyebrow">Real-time city weather</p>
+            <h1 id="app-title">Weather Tracker</h1>
+          </div>
+          <div class="live-pill" aria-label="Live API status">
+            <span class="pulse" aria-hidden="true"></span>
+            Live
+          </div>
+        </div>
+
+        <form class="search-form" id="weather-form" novalidate>
+          <label for="city-input">City name</label>
+          <div class="search-row">
+            <input id="city-input" name="city" type="search" autocomplete="address-level2" placeholder="Search Indore, London, Tokyo..." required>
+            <button type="submit" id="search-button">
+              <span class="button-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="m21 21-4.35-4.35"></path>
+                  <circle cx="11" cy="11" r="7"></circle>
+                </svg>
+              </span>
+              <span id="search-label">Search</span>
+            </button>
+          </div>
+        </form>
+
+        <p class="message" id="message" role="status" aria-live="polite">Enter a city to view current temperature, humidity, wind, and conditions.</p>
+
+        <section class="current-card" id="weather-card" hidden>
+          <div class="current-main">
+            <div class="weather-icon" id="weather-icon" aria-hidden="true"></div>
+            <div>
+              <p class="location" id="location-name"></p>
+              <p class="condition" id="condition-text"></p>
+            </div>
+          </div>
+          <div class="temperature-wrap">
+            <span class="temperature" id="temperature"></span>
+            <span class="unit">°C</span>
+          </div>
+
+          <dl class="weather-grid">
+            <div>
+              <dt>Humidity</dt>
+              <dd id="humidity"></dd>
+            </div>
+            <div>
+              <dt>Wind</dt>
+              <dd id="wind"></dd>
+            </div>
+            <div>
+              <dt>Direction</dt>
+              <dd id="direction"></dd>
+            </div>
+            <div>
+              <dt>Updated</dt>
+              <dd id="updated"></dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="recent-section" aria-labelledby="recent-title">
+          <div class="section-heading">
+            <h2 id="recent-title">Recent Searches</h2>
+            <button class="ghost-button" id="clear-recent" type="button" hidden>Clear</button>
+          </div>
+          <div class="recent-list" id="recent-list" aria-label="Recent searched cities"></div>
+        </section>
+      </section>
+
+      <aside class="info-panel" aria-label="Project highlights">
+        <div class="sky-visual" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+          <div class="rain rain-one"></div>
+          <div class="rain rain-two"></div>
+        </div>
+        <div class="info-copy">
+          <h2>Clear sky, light breeze.</h2>
+          <p>Current conditions stay centered, readable, and calm across desktop and mobile screens.</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
